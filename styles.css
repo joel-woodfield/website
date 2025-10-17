@@ -4,6 +4,7 @@
     line-height: 1.4;
     background-color: #f6f7fb;
     color: #1f1f24;
+    --accent-color: #e69113;
 }
 
 body {
@@ -44,9 +45,9 @@ body {
 }
 
 .tab-button.active {
-    background-color: #204ecf;
+    background-color: var(--accent-color);
     color: #fff;
-    border-color: #204ecf;
+    border-color: var(--accent-color);
     box-shadow: 0 4px 12px rgba(32, 78, 207, 0.2);
 }
 
@@ -149,7 +150,29 @@ body {
 }
 
 .slider-control input[type="range"] {
+    width: 80px;
+    -webkit-appearance: none;
+    background-color: lightgray;
+    border-radius: 6px;
+    accent-color: var(--accent-color);
     flex: 1;
+}
+
+.slider-control input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: lightgray;
+  border-radius: 6px;
+}
+
+.slider-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  cursor: pointer;
+
+  margin-top: calc((6px - 14px) / 2);
 }
 
 .slider-control span {
@@ -160,8 +183,8 @@ body {
 
 button {
     border-radius: 6px;
-    border: 1px solid #204ecf;
-    background-color: #204ecf;
+    border: 1px solid var(--accent-color);
+    background-color: var(--accent-color);
     color: #fff;
     padding: 8px 14px;
     font-size: 0.9rem;
