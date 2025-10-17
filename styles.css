@@ -1,0 +1,201 @@
+:root {
+    color-scheme: light;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.4;
+    background-color: #f6f7fb;
+    color: #1f1f24;
+}
+
+body {
+    margin: 0;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2.4rem;
+}
+
+.app-header p {
+    margin: 8px 0 24px 0;
+    color: #565b66;
+}
+
+.tab-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.tab-button {
+    padding: 10px 18px;
+    border: 1px solid #c9cbd1;
+    background-color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tab-button.active {
+    background-color: #204ecf;
+    color: #fff;
+    border-color: #204ecf;
+    box-shadow: 0 4px 12px rgba(32, 78, 207, 0.2);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.pane {
+    display: grid;
+    grid-template-columns: minmax(360px, 1fr) minmax(280px, 360px);
+    gap: 20px;
+    align-items: start;
+}
+
+.plot-wrapper {
+    min-height: 480px;
+    background-color: #fff;
+    border: 1px solid #dcdfe6;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 10px 40px rgba(47, 61, 103, 0.08);
+}
+
+.plot {
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+}
+
+.controls {
+    background-color: #fff;
+    border: 1px solid #dcdfe6;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 10px 40px rgba(47, 61, 103, 0.08);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.field label,
+.field legend {
+    font-weight: 600;
+    color: #2c2f37;
+}
+
+.field input[type="text"],
+.field input[type="number"],
+.field textarea {
+    border: 1px solid #ccd0dd;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #fafafe;
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+.field input[readonly],
+.field textarea[readonly] {
+    background-color: #f4f6fc;
+    color: #4a4f5c;
+}
+
+.fieldset {
+    border: 1px solid #ccd0dd;
+    border-radius: 6px;
+    padding: 10px 12px 12px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.fieldset label {
+    font-weight: 500;
+    color: #343844;
+}
+
+.slider-field {
+    gap: 10px;
+}
+
+.slider-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.slider-control input[type="range"] {
+    flex: 1;
+}
+
+.slider-control span {
+    min-width: 28px;
+    text-align: right;
+    font-weight: 600;
+}
+
+button {
+    border-radius: 6px;
+    border: 1px solid #204ecf;
+    background-color: #204ecf;
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(32, 78, 207, 0.24);
+}
+
+button:disabled {
+    background-color: #9ca4c1;
+    border-color: #9ca4c1;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.error-message {
+    min-height: 20px;
+    color: #c21f1f;
+    font-size: 0.85rem;
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 960px) {
+    .pane {
+        grid-template-columns: 1fr;
+    }
+
+    .plot-wrapper {
+        min-height: 360px;
+    }
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimisation Trajectory Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.11.0/lib/browser/math.js" defer></script>
+    <script src="https://cdn.plot.ly/plotly-2.30.0.min.js" defer></script>
+    <script type="module" src="scripts/app.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>Optimisation trajectory visualizer javascript version</h1>
+        </header>
+
+        <nav class="tab-bar">
+            <button class="tab-button active" data-target="univariate-tab">Univariate</button>
+            <button class="tab-button" data-target="bivariate-tab">Bivariate</button>
+        </nav>
+
+        <section id="univariate-tab" class="tab-content active">
+            <div class="pane">
+                <div class="plot-wrapper">
+                    <div id="univariate-plot" class="plot"></div>
+                </div>
+                <div class="controls">
+                    <div class="field">
+                        <label for="univariate-function">Function</label>
+                        <input id="univariate-function" type="text" value="x^2" autocomplete="off">
+                    </div>
+                    <div id="univariate-error" class="error-message"></div>
+                    <div class="field">
+                        <label for="univariate-derivative">Derivative</label>
+                        <input id="univariate-derivative" type="text" readonly>
+                    </div>
+                    <div class="field" data-role="hessian">
+                        <label for="univariate-hessian">Second derivative</label>
+                        <input id="univariate-hessian" type="text" readonly>
+                    </div>
+                    <fieldset class="field fieldset">
+                        <legend>Optimiser</legend>
+                        <label><input type="radio" name="univariate-optimiser" value="Gradient Descent" checked> Gradient Descent</label>
+                        <label><input type="radio" name="univariate-optimiser" value="Newton"> Newton</label>
+                    </fieldset>
+                    <div class="field">
+                        <label for="univariate-initial-x">Initial x</label>
+                        <input id="univariate-initial-x" type="number" step="any" value="0.5">
+                    </div>
+                    <div class="field" data-role="learning-rate">
+                        <label for="univariate-learning-rate">Learning rate</label>
+                        <input id="univariate-learning-rate" type="number" step="any" value="0.1">
+                    </div>
+                    <div class="field" data-role="momentum">
+                        <label for="univariate-momentum">Momentum</label>
+                        <input id="univariate-momentum" type="number" step="any" value="0">
+                    </div>
+                    <div class="field slider-field">
+                        <label for="univariate-step">Optimisation step</label>
+                        <div class="slider-control">
+                            <input id="univariate-step" type="range" min="0" max="20" step="1" value="0">
+                            <span id="univariate-step-value">0</span>
+                        </div>
+                        <button id="univariate-step-button" type="button">Next step</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bivariate-tab" class="tab-content">
+            <div class="pane">
+                <div class="plot-wrapper">
+                    <div id="bivariate-plot" class="plot"></div>
+                </div>
+                <div class="controls">
+                    <div class="field">
+                        <label for="bivariate-function">Function</label>
+                        <input id="bivariate-function" type="text" value="x^2 + y^2" autocomplete="off">
+                    </div>
+                    <div id="bivariate-error" class="error-message"></div>
+                    <div class="field">
+                        <label for="bivariate-gradient">Gradient</label>
+                        <input id="bivariate-gradient" type="text" readonly>
+                    </div>
+                    <div class="field" data-role="hessian">
+                        <label for="bivariate-hessian">Hessian</label>
+                        <textarea id="bivariate-hessian" rows="2" readonly></textarea>
+                    </div>
+                    <fieldset class="field fieldset">
+                        <legend>Optimiser</legend>
+                        <label><input type="radio" name="bivariate-optimiser" value="Gradient Descent" checked> Gradient Descent</label>
+                        <label><input type="radio" name="bivariate-optimiser" value="Adam"> Adam</label>
+                        <label><input type="radio" name="bivariate-optimiser" value="Newton"> Newton</label>
+                    </fieldset>
+                    <div class="field">
+                        <label for="bivariate-initial-x">Initial x</label>
+                        <input id="bivariate-initial-x" type="number" step="any" value="0.5">
+                    </div>
+                    <div class="field">
+                        <label for="bivariate-initial-y">Initial y</label>
+                        <input id="bivariate-initial-y" type="number" step="any" value="0.5">
+                    </div>
+                    <div class="field" data-role="learning-rate">
+                        <label for="bivariate-learning-rate">Learning rate</label>
+                        <input id="bivariate-learning-rate" type="number" step="any" value="0.1">
+                    </div>
+                    <div class="field" data-role="momentum">
+                        <label for="bivariate-momentum">Momentum</label>
+                        <input id="bivariate-momentum" type="number" step="any" value="0">
+                    </div>
+                    <div class="field" data-role="beta1">
+                        <label for="bivariate-beta1">Beta 1</label>
+                        <input id="bivariate-beta1" type="number" step="any" value="0.9">
+                    </div>
+                    <div class="field" data-role="beta2">
+                        <label for="bivariate-beta2">Beta 2</label>
+                        <input id="bivariate-beta2" type="number" step="any" value="0.999">
+                    </div>
+                    <div class="field slider-field">
+                        <label for="bivariate-step">Optimisation step</label>
+                        <div class="slider-control">
+                            <input id="bivariate-step" type="range" min="0" max="20" step="1" value="0">
+                            <span id="bivariate-step-value">0</span>
+                        </div>
+                        <button id="bivariate-step-button" type="button">Next step</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
