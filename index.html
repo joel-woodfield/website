@@ -13,7 +13,6 @@
     <div class="app-container">
         <header class="app-header">
             <h1>Optimisation trajectory visualizer</h1>
-            <h3>javascript edition</h3>
         </header>
 
         <nav class="tab-bar">
@@ -27,9 +26,17 @@
                     <div id="univariate-plot" class="plot"></div>
                 </div>
                 <div class="controls">
+                    <div class="field slider-field">
+                        <label for="univariate-step">Optimisation step</label>
+                        <div class="slider-control">
+                            <input id="univariate-step" type="range" min="0" max="20" step="1" value="0">
+                            <span id="univariate-step-value">0</span>
+                        </div>
+                        <button id="univariate-step-button" type="button">Optimisation step</button>
+                    </div>
                     <div class="field">
                         <label for="univariate-function">Function</label>
-                        <input id="univariate-function" type="text" value="x^2" autocomplete="off">
+                        <input id="univariate-function" type="text" value="x ^ 2" autocomplete="off">
                     </div>
                     <div id="univariate-error" class="error-message"></div>
                     <div class="field">
@@ -57,14 +64,6 @@
                         <label for="univariate-momentum">Momentum</label>
                         <input id="univariate-momentum" type="number" step="any" value="0">
                     </div>
-                    <div class="field slider-field">
-                        <label for="univariate-step">Optimisation step</label>
-                        <div class="slider-control">
-                            <input id="univariate-step" type="range" min="0" max="20" step="1" value="0">
-                            <span id="univariate-step-value">0</span>
-                        </div>
-                        <button id="univariate-step-button" type="button">Next step</button>
-                    </div>
                 </div>
             </div>
         </section>
@@ -75,9 +74,17 @@
                     <div id="bivariate-plot" class="plot"></div>
                 </div>
                 <div class="controls">
+                    <div class="field slider-field">
+                        <label for="bivariate-step">Optimisation step</label>
+                        <div class="slider-control">
+                            <input id="bivariate-step" type="range" min="0" max="20" step="1" value="0">
+                            <span id="bivariate-step-value">0</span>
+                        </div>
+                        <button id="bivariate-step-button" type="button">Optimisation step</button>
+                    </div>
                     <div class="field">
                         <label for="bivariate-function">Function</label>
-                        <input id="bivariate-function" type="text" value="x^2 + y^2" autocomplete="off">
+                        <input id="bivariate-function" type="text" value="x ^ 2 + y ^ 2" autocomplete="off">
                     </div>
                     <div id="bivariate-error" class="error-message"></div>
                     <div class="field">
@@ -117,14 +124,6 @@
                     <div class="field" data-role="beta2">
                         <label for="bivariate-beta2">Beta 2</label>
                         <input id="bivariate-beta2" type="number" step="any" value="0.999">
-                    </div>
-                    <div class="field slider-field">
-                        <label for="bivariate-step">Optimisation step</label>
-                        <div class="slider-control">
-                            <input id="bivariate-step" type="range" min="0" max="20" step="1" value="0">
-                            <span id="bivariate-step-value">0</span>
-                        </div>
-                        <button id="bivariate-step-button" type="button">Next step</button>
                     </div>
                 </div>
             </div>
