@@ -16,6 +16,18 @@ function setupTabs() {
     });
 }
 
+function disableScrollOnNumberInputs() {
+    const inputs = document.querySelectorAll('input[type="number"]');
+
+    inputs.forEach(input => {
+        input.addEventListener('wheel', e => e.preventDefault());
+
+        input.addEventListener('keydown', e => {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') e.preventDefault();
+        });
+    });
+}
+
 function selectElements() {
     const univariate = new Univariate({
         plot: document.getElementById("univariate-plot"),
@@ -63,6 +75,7 @@ function selectElements() {
 
 document.addEventListener("DOMContentLoaded", () => {
     setupTabs();
+    disableScrollOnNumberInputs();
     const { univariate, bivariate } = selectElements();
     univariate.init();
     bivariate.init();
